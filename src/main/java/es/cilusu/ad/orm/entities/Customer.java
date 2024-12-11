@@ -26,7 +26,7 @@ public class Customer {
     @Column(name = "email", length = 50)
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
@@ -41,13 +41,13 @@ public class Customer {
     @Column(name = "last_update")
     private Instant lastUpdate;
 
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false, fetch = FetchType.EAGER)
     private Store store;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     private Collection<Rental> rentals;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
     private Collection<Payment> payments;
 
 }

@@ -25,15 +25,21 @@ public class Main {
         System.out.println("Resultado de la búsqueda:");
         System.out.println(cityFind);
         System.out.println();
+        System.out.println(cityFind.getCountry().getCountry());
     }
 
     private static void usandoSQL(EntityManager entityManager){
         System.out.printf("Buscamos la categoría con ID = %s, usando SQL Nativo.\n", TEST_CITY_ID);
 
-        Query singleQuery = entityManager.createNativeQuery("select city_id, city,  last_update from city where city_id = :citId", City.class);
-        singleQuery.setParameter("citId", TEST_CITY_ID);
+//        Query singleQuery = entityManager.createNativeQuery("select city_id, city, last_update from city where city_id = :citId", City.class);
+//        Query singleQuery = entityManager.createNativeQuery("select city_id, city, last_update, country_id from city inner join country on city.country_id = country.country_id where city_id = :citId", City.class);
+        Query singleQuery = entityManager.createNativeQuery("select city_id, city, last_update, country_id from city where city_id = :citId", City.class);
+
+        singleQuery.setParameter("citId", 4);
 
         City city = (City) singleQuery.getSingleResult();
+
         System.out.println(city);
+        System.out.println(city.getCountry().getCountry());
     }
 }

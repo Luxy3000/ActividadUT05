@@ -24,7 +24,7 @@ public class Language {
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
 
-    @OneToMany(mappedBy = "languaje")
-    private Collection<Film> films;
+//    @OneToMany(mappedBy = "languaje")
+//    private Collection<Film> films;
 
 }

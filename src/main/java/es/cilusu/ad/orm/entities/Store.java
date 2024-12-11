@@ -29,7 +29,11 @@ public class Store {
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
 
+
+//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "store", optional = false)
+//    private Inventory inventory;
+
     @OneToMany(mappedBy = "store")
-    private Collection<Customer> customers;
+    private Collection<Staff> staff;
 
 }

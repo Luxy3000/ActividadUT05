@@ -17,17 +17,9 @@ public class Payment {
     @Column(name = "payment_id", nullable = false)
     private Short id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+//    @ManyToOne(optional = false)
+//    @JoinColumn(name = "customer_id", nullable = false)
+//    private Customer customer;
 
     @Column(name = "amount", nullable = false, precision = 5, scale = 2)
     private BigDecimal amount;

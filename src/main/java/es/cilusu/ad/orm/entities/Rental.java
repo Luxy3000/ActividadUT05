@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
+import java.util.Collection;
 
 @Getter
 @Setter
@@ -20,11 +21,11 @@ public class Rental {
     @Column(name = "rental_date", nullable = false)
     private Instant rentalDate;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "inventory_id", nullable = false)
     private Inventory inventory;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
@@ -34,5 +35,11 @@ public class Rental {
     @ColumnDefault("current_timestamp()")
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private Staff staff;
+
+    @OneToMany
+    private Collection<Payment> payment;
 
 }

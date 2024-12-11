@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
+import java.util.Collection;
 
 @Getter
 @Setter
@@ -45,5 +46,12 @@ public class Staff {
     @ColumnDefault("current_timestamp()")
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
+
+    @OneToMany(mappedBy = "staff")
+    private Collection<Rental> rentals;
+
+    @ManyToOne(optional = false)
+    private Store store;
+
 
 }

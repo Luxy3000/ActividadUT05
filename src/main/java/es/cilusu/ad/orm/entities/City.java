@@ -27,7 +27,7 @@ public class City {
     @OneToMany(mappedBy = "city")
     private Collection<Address> address;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id", nullable = false)
     private Country country;
 
