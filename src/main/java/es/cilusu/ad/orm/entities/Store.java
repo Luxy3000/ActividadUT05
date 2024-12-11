@@ -29,7 +29,7 @@ public class Store {
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
 
-    @OneToMany(mappedBy = "Store")
+    @OneToMany(mappedBy = "store")
     private Collection<Customer> customers;
 
 }

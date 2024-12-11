@@ -44,7 +44,7 @@ public class Customer {
     @ManyToOne(optional = false)
     private Store store;
 
-    @OneToMany(mappedBy = "Rental")
+    @OneToMany(mappedBy = "customer")
     private Collection<Rental> rentals;
 
     @OneToMany(mappedBy = "customer")

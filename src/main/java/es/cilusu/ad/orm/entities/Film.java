@@ -65,4 +65,8 @@ public class Film {
     @ManyToOne(optional = false)
     private Language originalLanguaje;
 
+    @ManyToOne(optional = false)
+    private Language languaje;
+
+
 }
