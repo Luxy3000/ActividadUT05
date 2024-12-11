@@ -36,6 +36,7 @@ public class Address {
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
 
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "city_id")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private City city;
 }

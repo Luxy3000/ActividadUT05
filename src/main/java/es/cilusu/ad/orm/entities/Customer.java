@@ -41,6 +41,7 @@ public class Customer {
     @Column(name = "last_update")
     private Instant lastUpdate;
 
+    @JoinColumn(name = "store_id")
     @OneToOne(optional = false, fetch = FetchType.EAGER)
     private Store store;
 

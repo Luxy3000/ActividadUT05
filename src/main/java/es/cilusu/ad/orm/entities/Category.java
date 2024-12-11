@@ -24,7 +24,7 @@ public class Category {
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Film> films;
 
 }

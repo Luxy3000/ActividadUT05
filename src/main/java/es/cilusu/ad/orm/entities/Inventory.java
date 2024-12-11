@@ -27,9 +27,10 @@ public class Inventory {
     private Instant lastUpdate;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "store_id")
     private Store store;
 
-    @OneToMany(mappedBy = "inventory")
+    @OneToMany(mappedBy = "inventory", fetch = FetchType.LAZY)
     private Collection<Rental> rental;
 
 }

@@ -24,7 +24,9 @@ public class Informe_Situacion_Cliente {
     private static void findClient(EntityManager entityManager, int clietnId) {
         System.out.printf("Buscando datos del cliente con ID %s \n", clietnId);
         Customer cliente = entityManager.find(Customer.class, clietnId);
-        System.out.println("Datos de cliente:");
-        System.out.println("Nombre: " + cliente.getFirstName() + " " + cliente.getLastName());
+        System.out.println("   Datos de cliente:");
+        System.out.println("      Nombre: " + cliente.getFirstName() + " " + cliente.getLastName());
+        System.out.println("      Direccion: " + cliente.getAddress().getAddress() + ", " + cliente.getAddress().getDistrict() + ", " + cliente.getAddress().getCity().getCity());
+        System.out.println("      Tienda socio: " + cliente.getStore().getAddress().getAddress());
     }
 }

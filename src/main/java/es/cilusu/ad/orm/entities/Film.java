@@ -59,13 +59,13 @@ public class Film {
     @ManyToMany(mappedBy = "films")
     private Collection<Actor> actors;
 
-    @ManyToMany(mappedBy = "films")
+    @ManyToMany(mappedBy = "films", fetch = FetchType.EAGER)
     private Collection<Category> categories;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Language originalLanguaje;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Language languaje;
 
 

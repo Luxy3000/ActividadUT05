@@ -24,7 +24,7 @@ public class City {
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
 
-    @OneToMany(mappedBy = "city")
+    @OneToMany(mappedBy = "city", fetch = FetchType.EAGER)
     private Collection<Address> address;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

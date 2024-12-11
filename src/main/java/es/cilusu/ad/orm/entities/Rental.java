@@ -37,6 +37,7 @@ public class Rental {
     private Instant lastUpdate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "staff_id")
     private Staff staff;
 
     @OneToMany
