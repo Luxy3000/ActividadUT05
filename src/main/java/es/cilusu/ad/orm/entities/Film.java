@@ -59,14 +59,16 @@ public class Film {
     @ManyToMany(mappedBy = "films")
     private Collection<Actor> actors;
 
-    @ManyToMany(mappedBy = "films", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "films", fetch = FetchType.LAZY)
     private Collection<Category> categories;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    private Language originalLanguaje;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "language_id", updatable = false, insertable=false)
+    private Language originalLanguage;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    private Language languaje;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "language_id")
+    private Language language;
 
 
 }

@@ -24,7 +24,8 @@ public class Category {
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "film_category", joinColumns = {@JoinColumn(name = "category_id")}, inverseJoinColumns = {@JoinColumn(name = "film_id")})
     private Collection<Film> films;
 
 }

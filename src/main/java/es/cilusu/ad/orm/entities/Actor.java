@@ -27,7 +27,7 @@ public class Actor {
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "film_actor", joinColumns = {@JoinColumn(name = "actor_id")}, inverseJoinColumns = {@JoinColumn(name = "film_id")})
     private Collection<Film> films;
 

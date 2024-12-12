@@ -42,13 +42,13 @@ public class Customer {
     private Instant lastUpdate;
 
     @JoinColumn(name = "store_id")
-    @OneToOne(optional = false, fetch = FetchType.EAGER)
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Store store;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private Collection<Rental> rentals;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
     private Collection<Payment> payments;
 
 }

@@ -47,10 +47,11 @@ public class Staff {
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
 
-    @OneToMany(mappedBy = "staff")
+    @OneToMany(mappedBy = "staff", fetch = FetchType.LAZY)
     private Collection<Rental> rentals;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
     private Store store;
 
 

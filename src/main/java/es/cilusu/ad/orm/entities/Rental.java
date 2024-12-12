@@ -21,7 +21,7 @@ public class Rental {
     @Column(name = "rental_date", nullable = false)
     private Instant rentalDate;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "inventory_id", nullable = false)
     private Inventory inventory;
 
@@ -42,5 +42,6 @@ public class Rental {
 
     @OneToMany
     private Collection<Payment> payment;
+
 
 }

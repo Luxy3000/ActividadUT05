@@ -1,11 +1,11 @@
 package es.cilusu.ad.orm.programas;
 
 import es.cilusu.ad.orm.entities.Customer;
+import es.cilusu.ad.orm.entities.Payment;
+import es.cilusu.ad.orm.entities.Rental;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import org.mariadb.jdbc.client.Client;
-
 import java.util.*;
 
 public class Informe_Situacion_Cliente {
@@ -17,6 +17,8 @@ public class Informe_Situacion_Cliente {
         try(EntityManagerFactory emf = Persistence.createEntityManagerFactory(SAKILA_PERSISTENCE_UNIT);
         EntityManager em = emf.createEntityManager()) {
             findClient(em, idCliente);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
         }
 
     }
@@ -27,6 +29,22 @@ public class Informe_Situacion_Cliente {
         System.out.println("   Datos de cliente:");
         System.out.println("      Nombre: " + cliente.getFirstName() + " " + cliente.getLastName());
         System.out.println("      Direccion: " + cliente.getAddress().getAddress() + ", " + cliente.getAddress().getDistrict() + ", " + cliente.getAddress().getCity().getCity());
-        System.out.println("      Tienda socio: " + cliente.getStore().getAddress().getAddress());
+        System.out.println("      Tienda socio: " + cliente.getStore().getAddress().getAddress() + ", " + cliente.getStore().getAddress().getDistrict() + ", " + cliente.getStore().getAddress().getCity().getCity());
+        System.out.println("      Alquileres: ");
+            if (cliente.getRentals().isEmpty()) {
+                System.out.println("         No tiene alquileres.");
+            } else {
+                for (Rental rental : cliente.getRentals()) {
+                    System.out.println("         Película: " + rental.getInventory().getFilm().getTitle());
+                }
+            }
+        System.out.println("      Pagos: ");
+            if (cliente.getPayments().isEmpty()) {
+                System.out.println("         No tiene pagos.");
+            } else {
+                for (Payment payment: cliente.getPayments()) {
+                    System.out.println("         Pago: " + payment.getAmount());
+                }
+            }
     }
 }
