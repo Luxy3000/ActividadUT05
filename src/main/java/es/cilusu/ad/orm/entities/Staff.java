@@ -23,7 +23,7 @@ public class Staff {
     @Column(name = "last_name", nullable = false, length = 45)
     private String lastName;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 

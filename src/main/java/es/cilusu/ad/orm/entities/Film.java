@@ -59,7 +59,8 @@ public class Film {
     @ManyToMany(mappedBy = "films")
     private Collection<Actor> actors;
 
-    @ManyToMany(mappedBy = "films", fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "film_category", joinColumns = {@JoinColumn(name = "film_id")}, inverseJoinColumns = {@JoinColumn(name = "category_id")})
     private Collection<Category> categories;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
@@ -69,6 +70,5 @@ public class Film {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "language_id")
     private Language language;
-
 
 }
